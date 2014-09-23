@@ -1,1 +1,22 @@
 pop3-server - A POP3 server library.
+
+1) Introduction
+2) Usage Example
+
+
+------------------------------------------------------------------------
+Introduction
+
+pop3-server can listen to a TCP port and act as a POP3 server.
+
+
+------------------------------------------------------------------------
+Usage Example
+
+Look at the demo_server.js
+
+
+------------------------------------------------------------------------
+License
+
+See file COPYING for details.
