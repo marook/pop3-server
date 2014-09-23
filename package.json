@@ -1,7 +1,7 @@
 {
     "name": "pop3-server",
     "description": "POP3 server.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "repository": {
         "type": "git",
         "url": "https://github.com/marook/pop3-server.git"
