@@ -26,6 +26,16 @@ function main(){
                 }
             ]);
         });
+
+        connection.on('uidl', function(index, callback){
+            console.log('UID list: ' + index);
+
+            callback([
+                {
+                    uid: 'm0'
+                }
+            ]);
+        });
     });
 
     server.listen(110);
