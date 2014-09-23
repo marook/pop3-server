@@ -19,10 +19,9 @@ function main(){
         connection.on('list', function(callback){
             console.log('List requested');
 
-            return callback(null, [
+            return callback([
                 {
-                    message_index: 1,
-                    message_size: 236
+                    size: 236
                 }
             ]);
         });
