@@ -13,7 +13,7 @@ function main(){
         connection.on('stat', function(callback){
             console.log('Stat requested');
 
-            return callback(null, 1, 236);
+            return callback(1, 236);
         });
 
         connection.on('list', function(callback){
