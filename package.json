@@ -1,0 +1,6 @@
+{
+    "name": "pop3-server",
+    "description": "POP3 server.",
+    "version": "0.0.1",
+    "main": "lib/main.js"
+}
