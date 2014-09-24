@@ -1,6 +1,17 @@
 pop3-server - developer guide
 
-1) Release NPM Module
+1) Running the tests
+2) Release NPM Module
+
+
+------------------------------------------------------------------------
+Running the tests
+
+Currently there is a set of mocha (https://github.com/visionmedia/mocha)
+based unit and integration tests.
+
+To run the tests within node.js type:
+$ npm test
 
 
 ------------------------------------------------------------------------
@@ -10,6 +21,7 @@ Adjust the module version in package.json. The execute the following:
 
 $ git commit -a
 $ npm install
+$ npm test
 $ npm publish
 $ git tag <released version>
 $ git push
