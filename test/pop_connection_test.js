@@ -52,6 +52,27 @@ describe('create_pop_connection', function(){
         });
     });
 
+    describe('STAT', function(){
+        it('should emit stat event', function(done){
+            var expected_number_of_messages = 42;
+            var expected_overall_size = 100000;
+
+            clear_server_sent_data();
+
+            pop_connection.on('stat', function(callback){
+                callback(expected_number_of_messages, expected_overall_size);
+
+                setTimeout(function(){
+                    server_sent_data('+OK ' + expected_number_of_messages + ' ' + expected_overall_size + '\r\n');
+
+                    done();
+                }, 0);
+            });
+
+            client_sends_data('STAT\r\n');
+        });
+    });
+
     function client_sends_data(s){
         socket_connection.emit('data', new Buffer(s, 'ascii'));
     }
