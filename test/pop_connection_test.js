@@ -13,15 +13,11 @@ describe('create_pop_connection', function(){
         pop_connection = pop3.create_pop_connection(socket_connection);
     });
 
-    function client_sends_data(s){
-        socket_connection.emit('data', new Buffer(s, 'ascii'));
-    }
-
     describe('CAPA', function(){
         it('should return empty feature list', function(){
             client_sends_data('CAPA\r\n');
 
-            socket_connection.written.should.equal(server_hello + '.\r\n');
+            server_sent_data('.\r\n');
         });
     });
 
@@ -29,7 +25,15 @@ describe('create_pop_connection', function(){
         it('should accept username and return +OK', function(){
             client_sends_data('USER hanibal\r\n');
 
-            socket_connection.written.should.equal(server_hello + '+OK\r\n');
+            server_sent_data('+OK\r\n');
         });
     });
+
+    function client_sends_data(s){
+        socket_connection.emit('data', new Buffer(s, 'ascii'));
+    }
+
+    function server_sent_data(s){
+        socket_connection.written.should.equal(server_hello + s);
+    }
 });
