@@ -24,4 +24,12 @@ describe('create_pop_connection', function(){
             socket_connection.written.should.equal(server_hello + '.\r\n');
         });
     });
+
+    describe('USER', function(){
+        it('should accept username and return +OK', function(){
+            client_sends_data('USER hanibal\r\n');
+
+            socket_connection.written.should.equal(server_hello + '+OK\r\n');
+        });
+    });
 });
