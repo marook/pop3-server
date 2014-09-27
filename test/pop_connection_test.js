@@ -73,6 +73,16 @@ describe('create_pop_connection', function(){
         });
     });
 
+    describe('QUIT', function(){
+        it('should emit quit event', function(done){
+            pop_connection.on('quit', function(){
+                done();
+            });
+
+            client_sends_data('QUIT\r\n');
+        });
+    });
+
     function client_sends_data(s){
         socket_connection.emit('data', new Buffer(s, 'ascii'));
     }
