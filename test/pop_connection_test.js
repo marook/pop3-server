@@ -83,6 +83,18 @@ describe('create_pop_connection', function(){
         });
     });
 
+    describe('UIDL', function(){
+        it('should emit uidl event when sent without filter', function(done){
+            pop_connection.on('uidl', function(filter_index){
+                (filter_index === null).should.be.true;
+
+                done();
+            });
+
+            client_sends_data('UIDL\r\n');
+        });
+    });
+
     function client_sends_data(s){
         socket_connection.emit('data', new Buffer(s, 'ascii'));
     }
