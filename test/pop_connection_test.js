@@ -11,7 +11,6 @@ describe('create_pop_connection', function(){
         socket_connection = new socket_mock.SocketMock();
 
         pop_connection = pop3.create_pop_connection(socket_connection);
-
     });
 
     describe('CAPA', function(){
@@ -86,12 +85,22 @@ describe('create_pop_connection', function(){
     describe('UIDL', function(){
         it('should emit uidl event when sent without filter', function(done){
             pop_connection.on('uidl', function(filter_index){
-                (filter_index === null).should.be.true;
+                should(filter_index).be.null;
 
                 done();
             });
 
             client_sends_data('UIDL\r\n');
+        });
+
+        it('should emit uild event with sent with filter', function(done){
+            pop_connection.on('uidl', function(filter_index){
+                filter_index.should.equal('42');
+
+                done();
+            });
+
+            client_sends_data('UIDL 42\r\n');
         });
     });
 
