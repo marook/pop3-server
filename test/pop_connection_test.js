@@ -93,7 +93,7 @@ describe('create_pop_connection', function(){
             client_sends_data('UIDL\r\n');
         });
 
-        it('should emit uild event with sent with filter', function(done){
+        it('should emit uidl event with sent with filter', function(done){
             pop_connection.on('uidl', function(filter_index){
                 filter_index.should.equal('42');
 
